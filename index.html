@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="shortcut icon" href="img/paper.svg" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Curriculo</title>
+</head>
+
+<body id="inicio">
+    <div id="aurea"></div>
+    <div id="blur"></div>
+
+    <nav class="nav">
+        <div class="logo">
+            <a href="#inicio">Currículo</a>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#habilidade">Habilidades</a></li>
+            <li><a href="#contato">Redes Sociais</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="hero">
+            <div class="texto">
+                <div class="nome" data-value="JUAN MIGUEL">
+                    JUAN MIGUEL
+                </div>
+                <div class="subtitulo">
+                    <!-- lkndzklnsklnkl -->
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll">
+            <a href="#formacao"><img src="img/mouse.png" alt=""><span><img src="img/down-arrow-alt-regular-24.png"
+                        alt=""></span></a>
+        </div>
+
+        <div id="habilidade" class="skills">
+            <div class="titulo">
+                Habilidades
+            </div>
+            <div class="wrap">
+
+                <div class="item">
+                    <div class="label">
+                        HTML
+                    </div>
+                    <div class="imagem">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/640px-HTML5_logo_and_wordmark.svg.png"
+                            alt="">
+                    </div>
+                    <div class="barr">
+                        <div class="prog" style="width: 90%;background-color: orange"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">
+                        CSS
+                    </div>
+                    <div class="imagem">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png"
+                            alt="">
+                    </div>
+                    <div class="barr">
+                        <div class="prog" style="width: 75%;"></div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="label">
+                        js
+                    </div>
+                    <div class="imagem">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png"
+                            alt="">
+                    </div>
+                    <div class="barr">
+                        <div class="prog" style="width: 75%; background-color: yellow;"></div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="label">
+                        PHP
+                    </div>
+                    <div class="imagem">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/2560px-PHP-logo.svg.png"
+                            alt="">
+                    </div>
+                    <div class="barr">
+                        <div class="prog" style="width: 80%;background-color: purple;"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">
+                        python
+                    </div>
+                    <div class="imagem">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png"
+                            alt="">
+                    </div>
+                    <div class="barr">
+                        <div class="prog" style="width: 90%;background-color: green;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contato" id="contato">
+            <div class="titulo">
+                Redes Sociais
+            </div>
+
+            <div class="card-wrap">
+                <div class="card">
+                    <div class="imagem">
+                        <img src="https://enotas.com.br/blog/wp-content/uploads/2021/02/GitHub.jpg" alt="foto">
+                    </div>
+                    <div class="conteudo">
+                        GitHub
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="imagem">
+                        <img src="https://logos-world.net/wp-content/uploads/2020/05/Linkedin-Logo.jpg" alt="foto">
+                    </div>
+                    <div class="conteudo">
+                        Likedin
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <script>
+        const aurea = document.querySelector('#aurea');
+
+        window.onpointermove = (e) => {
+            aurea.animate({
+                left: `${e.pageX}px`,
+                top: `${e.pageY}px`
+            }, { duration: 1000, fill: "forwards" });
+        }
+
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const nome = document.querySelector('.nome');
+
+        nome.onmouseover = event => {
+            let iteration = 0;
+
+
+            let interval = setInterval(() => {
+                event.target.innerText = event.target.innerText
+                    .split("")
+                    .map((letter, index) => {
+                        if (index < iteration) {
+                            return event.target.dataset.value[index];
+                        }
+
+                        return letters[Math.floor(Math.random() * 26)]
+                    })
+                    .join("");
+
+                if (iteration >= event.target.dataset.value.length) {
+                    clearInterval(interval);
+                }
+
+                iteration += 1 / 4;
+            }, 30);
+        }
+
+
+        var navbar = document.querySelector("nav");
+        var scrollAnterior = window.pageYOffset;
+
+        window.addEventListener("scroll", function () {
+            var scroolAtual = window.pageYOffset;
+
+            if (scrollAnterior > scroolAtual && scroolAtual > 100) {
+                navbar.style.top = "0";
+            } else {
+                navbar.style.top = "-100px";
+            }
+            scrollAnterior = scroolAtual;
+        })
+
+
+
+        window.onload = () => {
+            const body = document.querySelector('body');
+
+            function criaEstrela() {
+                let star = document.createElement('i');
+                let posicaoX = Math.floor(Math.random() * document.body.clientWidth);
+                let posicaoY = Math.floor(Math.random() * document.body.clientHeight);
+
+                star.className = 'star';
+                star.style.left = posicaoX + 'px';
+                star.style.top = posicaoY + 'px';
+
+                body.appendChild(star);
+
+                setTimeout(() => {
+                    star.remove();
+                }, 3500);
+            }
+
+            setInterval(criaEstrela, 300);
+        }
+    </script>
+</body>
+
+</html>
